@@ -3,7 +3,7 @@
 -git commit -m "Add files" 
 -git push origin master
 
-
+git-practice
 원격 저장소와 연결이 다른 디렉터리에 되어 있다면 새로운 디렉터리에서 원격 저장소로 연결이 잘 되므로 기존의 연결을 끊어야 한다.
 -git remote remove origin
 
