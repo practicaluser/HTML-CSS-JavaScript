@@ -3,17 +3,17 @@
 -git commit -m "Add files" 
 -git push origin master
 
-git-practice
 원격 저장소와 연결이 다른 디렉터리에 되어 있다면 새로운 디렉터리에서 원격 저장소로 연결이 잘 되므로 기존의 연결을 끊어야 한다.
 -git remote remove origin
-
 새로운 디렉터리에 아래 명령어 실행
 -git remote add origin https://github.com/practicaluser/git-practice
-
 파일을 업데이트
 -git push origin master
 
-
+깃허브 처음 연결할 때(원격저장소도 처음 만들어진 경우)
+git init && git add . && git commit -m "Add files" 
+git remote add origin https://github.com/practicaluser/devops-blog.git
+git push origin master
 
 잔디심을려면 
 -git 저장소에 파일들이 push되었어도, push를 실행한 로컬의 이메일 정보가 git의 계정과 일치해야 잔디가 심어진다
