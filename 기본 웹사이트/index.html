@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+  <head>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        background-color: #333;
+        color: white;
+      }
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 1.2rem 0;
+      }
+      header>p{
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      header>ul {
+        display: flex;
+      }
+      header>ul>li {
+        list-style-type: none;
+        margin-left: 1.5rem;
+      }
+      header>ul>li>a{
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: grey;
+        padding-bottom: 5px;
+      }
+      header>ul>li>a:hover {
+        border-bottom: 5px solid gray;
+      }
+      @media screen and (max-width: 600px) {
+        .header {
+          flex-direction: column;
+        }
+      }
+        
+      
+      section {
+        padding: 0.3rem;
+        text-align: center;
+      }
+      section>p{
+        margin-bottom: 2rem;
+      }
+      section>p:first-child{
+        margin-bottom: 2rem;
+        font-weight: 900;
+        font-size: 2rem;
+      }
+      section>p:last-of-type {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      section>a {
+        display: block;
+        border: 1px solid black;
+        width: 150px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: auto;
+        padding: 1rem;
+        border-radius: 10px;
+        text-decoration: none;
+        background-color: white;
+        color: black;
+      }
+      footer {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        color: white;
+      }
+      footer>a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>명언</p>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </header>
+      <section>
+        <p>시작과 관련된 명언</p>
+        <p>아름다운 시작보다 아름다운 끝을 선택하라<br> 최고에 도달하려면 최저에 시작하라<br> 항상 가장 큰 노력이 필요한 것이, 바로 모든 일의 시작이다</p>
+        <a href="https://gongbuglog.tistory.com/52">Learn more</a>
+      </section>
+      <footer>
+         <a href="https://github.com/practicaluser/JavaScript">MyProject</a>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
