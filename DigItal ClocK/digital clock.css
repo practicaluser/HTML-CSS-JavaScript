@@ -1,0 +1,63 @@
+@font-face {
+  src: url(font/digital-7_0.ttf);
+  font-family: digital;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(#40e0d0, #ff8c00, #ff0080);
+}
+.container {
+  height: 200px;
+  width: 700px;
+  background: #00000050;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 70px;
+  border: 5px solid #ffffff80;
+}
+.time {
+  height: 100px;
+  width: 100px;
+}
+span {
+  display: block;
+  height: 100px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.new {
+  height: 70px;
+  width: 100%;
+  background: #ff5722;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-family: digital;
+  position: relative;
+}
+
+.new .hr {
+  position: absolute;
+  left: 20px;
+}
+
+.text {
+  height: 35px;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px;
+  box-sizing: border-box;
+  background: #ff9800;
+}
