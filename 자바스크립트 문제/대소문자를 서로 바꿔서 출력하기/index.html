@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const word = prompt('문자열을 입력하시오');
+      let changed = '';
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === word[i].toUpperCase()) {
+          changed += word[i].toLowerCase();
+        } else {
+          changed += word[i].toUpperCase();
+        }
+      }
+      console.log(changed);
+    </script>
+    
+  </body>
+</html>

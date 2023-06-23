@@ -1,0 +1,17 @@
+연산자를 클릭하면 연산자가 화면에 나오게 하기
+버전1에서도 나온 내용인데 html의 id는 복수속성이 불가능하다. 그런데 class로 변환하지 않고 html id에 복수 속성을 집어넣어서 동작을 안 했다.
+body
+<button class="multiply op">x</button>
+
+script
+let op = document.querySelectorAll(".op");
+const resultHelp = document.getElementById("operator");
+
+const op1 = (event) => {
+  operator += event.target.textContent;
+  resultHelp.value += event.target.textContent;
+}
+
+op.forEach(a => {
+  a.addEventListener("click", op1);
+});

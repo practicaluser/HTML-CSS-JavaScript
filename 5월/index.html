@@ -18,42 +18,70 @@
     <button class="num num-7">7</button>
     <button class="num num-8">8</button>
     <button class="num num-9">9</button>
-    <button id="plus +">+</button>
+    <button class="plus op">+</button>
   </div>
   <div class="row">
     <button class="num num-4">4</button>
     <button class="num num-5">5</button>
     <button class="num num-6">6</button>
-    <button id="minus">-</button>
+    <button class="minus op">-</button>
   </div>
   <div class="row">
     <button class="num num-1">1</button>
     <button class="num num-2">2</button>
     <button class="num num-3">3</button>
-    <button id="divide">/</button>
+    <button class="divide op">/</button>
   </div>
   <div class="row">
     <button id="clear">C</button>
     <button class="num num-0">0</button>
     <button id="calculate">=</button>
-    <button id="multiply">x</button>
+    <button class="multiply op">x</button>
   </div>
     
   <script>
-    function handleClick() {
-      alert("버튼이 클릭되었습니다!");
-    }
+    let numOne = '';
+    let operator = '';
+    let numTwo = '';
 
     let buttons = document.querySelectorAll(".num");
+    let op = document.querySelectorAll(".op");
 
-    // 모든 버튼에 대해 반복하여 클릭 이벤트 핸들러를 연결합니다.
+    const result = document.getElementById("result"); // 결과를 출력할 입력란
+    const resultHelp = document.getElementById("operator");
+
+    
+    const onClickNumber = (event) => {
+        if (!operator) { 
+          numOne += event.target.textContent;
+          result.value += event.target.textContent;
+          return;
+        } 
+        if (!numTwo) {
+          result.value = '';
+        }
+        numTwo += event.target.textContent;
+        result.value += event.target.textContent;
+    };
+
     buttons.forEach(button => {
-      button.addEventListener("click", handleClick);
+      button.addEventListener("click", onClickNumber);
     });
+
+    const op1 = (event) => {
+      operator += event.target.textContent;
+      resultHelp.value += event.target.textContent;
+    }
+
+    op.forEach(a => {
+      a.addEventListener("click", op1);
+    });
+
+
+    
   </script>
       
   </body>
 </html>
 
 
-<span></div>
