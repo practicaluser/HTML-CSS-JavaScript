@@ -40,28 +40,22 @@
   </div>
     
   <script>
-    let numOne = '';
     let operator = '';
-    let numTwo = '';
+    const num = [];
+    let number = [];
 
     let buttons = document.querySelectorAll(".num");
     let op = document.querySelectorAll(".op");
-
+    
+    const calculate = document.querySelector("#calculate")
     const result = document.getElementById("result"); // 결과를 출력할 입력란
     const resultHelp = document.getElementById("operator");
 
-    
     const onClickNumber = (event) => {
-        if (!operator) { 
-          numOne += event.target.textContent;
-          result.value += event.target.textContent;
-          return;
-        } 
-        if (!numTwo) {
-          result.value = '';
-        }
-        numTwo += event.target.textContent;
+      if (operator !== '=') {
+        num.push(event.target.textContent);
         result.value += event.target.textContent;
+      }
     };
 
     buttons.forEach(button => {
@@ -69,8 +63,13 @@
     });
 
     const op1 = (event) => {
+      if (operator) {
+        resultHelp.value = '';
+      }
+      num.push(event.target.textContent);
       operator += event.target.textContent;
       resultHelp.value += event.target.textContent;
+      result.value = '';
     }
 
     op.forEach(a => {
@@ -83,5 +82,18 @@
       
   </body>
 </html>
+// let numOne = '';
+// let numTwo = '';
 
-
+// const onClickNumber = (event) => {
+  //     if (!operator) { 
+  //       numOne += event.target.textContent;
+  //       result.value += event.target.textContent;
+  //       return;
+  //     } 
+  //     if (!numTwo) {
+  //       result.value = '';
+  //     }
+  //     numTwo += event.target.textContent;
+  //     result.value += event.target.textContent;
+  // };

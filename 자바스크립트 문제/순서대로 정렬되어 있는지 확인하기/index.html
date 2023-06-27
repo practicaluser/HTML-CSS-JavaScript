@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>순서대로 정렬되어 있는지 확인하기</title>
+  </head>
+  <body>
+    <script>
+     const height = prompt('키를 입력하세요.').split(' ');
+      let count = 0;
+      for (let i = 1; i < height.length; i++) {
+        if (height[i - 1] > height[i]) {
+          break; 
+        } else {
+          count += 1;
+        }
+      }
+
+      if (count > 0) {
+        console.log('YES');
+      } else {
+        console.log('NO');
+      }
+    </script>
+    
+  </body>
+</html>
