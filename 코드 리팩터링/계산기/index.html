@@ -41,16 +41,17 @@
     
   <script>
     let operator = '';
-    const num = [];
-    let number = [];
-
-    let buttons = document.querySelectorAll(".num");
-    let op = document.querySelectorAll(".op");
+    let num = [];
     
+    const buttons = document.querySelectorAll(".num");
+    const op = document.querySelectorAll(".op");
+
+    const clear = document.querySelector("#clear");
     const calculate = document.querySelector("#calculate")
-    const result = document.getElementById("result"); // 결과를 출력할 입력란
+    const result = document.getElementById("result"); 
     const resultHelp = document.getElementById("operator");
 
+    //숫자 버튼
     const onClickNumber = (event) => {
       if (operator !== '=') {
         num.push(event.target.textContent);
@@ -62,11 +63,16 @@
       button.addEventListener("click", onClickNumber);
     });
 
+    //연산자
     const op1 = (event) => {
       if (operator) {
         resultHelp.value = '';
       }
-      num.push(event.target.textContent);
+      if (event.target.textContent === 'x') {
+        num.push('*');
+      } else {
+        num.push(event.target.textContent);
+      }
       operator += event.target.textContent;
       resultHelp.value += event.target.textContent;
       result.value = '';
@@ -77,23 +83,28 @@
     });
 
 
+    //숫자들 모두 지우기
+    clear.addEventListener("click", () => {
+      operator = '';
+      num = [];
+      result.value = '';
+      resultHelp.value = '';
+    });
+
+    // =을 누르면 계산결과를 보여주기
+    calculate.addEventListener("click", () => {
+      result.value = '';
+      const equationString = num.join('');
+      const equation = new Function(`return ${equationString}`);
+      const answer = equation();
+      result.value += answer;
+    })
     
   </script>
       
   </body>
 </html>
-// let numOne = '';
-// let numTwo = '';
 
-// const onClickNumber = (event) => {
-  //     if (!operator) { 
-  //       numOne += event.target.textContent;
-  //       result.value += event.target.textContent;
-  //       return;
-  //     } 
-  //     if (!numTwo) {
-  //       result.value = '';
-  //     }
-  //     numTwo += event.target.textContent;
-  //     result.value += event.target.textContent;
-  // };
+
+
+
