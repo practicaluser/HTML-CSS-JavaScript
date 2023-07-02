@@ -1,0 +1,40 @@
+추첨 결과 
+보너스
+1~5회까지 결과 저장하기 
+1회 추첨결과
+2회 추첨결과
+버튼
+1~45번까지 숫자 중복하지 않기
+
+로또공 스타일
+.ball
+border-radius: 100%
+font-weight: 500;
+
+.ball .ball_Text
+width : 60px;
+height: 60px;
+line-height: 56px;
+font-size: 28px;
+
+<ion-icon name="add-outline"></ion-icon>
+
+자바스크립트에서 2차원 배열을 선언하는 방법
+https://joonfluence.tistory.com/508
+
+
+//html의 요소를 자바스크립트로 생성
+  let main = document.createElement("div");
+  main.className = "result";
+  document.body.appendChild(main);
+  let randomNumber = document.createElement("div");
+  randomNumber.className = "randomNumber";
+  randomNumber.textContent = "추첨 결과";
+  main.appendChild(randomNumber);
+  let img = document.createElement("img");
+  img.src = "plus.svg";
+  main.appendChild(img);
+  let bonus = document.createElement("div");
+  bonus.className = "bonus";
+  main.appendChild(bonus);
+  bonus.textContent = "보너스";
