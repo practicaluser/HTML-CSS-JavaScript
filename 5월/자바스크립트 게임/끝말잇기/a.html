@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+</head>
+<body>
+    <div class="participant">1번째 참가자</div>
+    <div>제시어: <span id="word"></span></div> 
+    <input type="text"></input> 
+    <button>입력</button>
+    
+    <script>
+        const n = parseInt(prompt('몇 명이 참가하나요?'));
+        const button = document.querySelector("button");
+        const text = document.querySelector("input");
+        const participant = document.querySelector(".participant");
+        let num = 1;
+        
+        button.addEventListener("click",  start)
+
+        function start () {
+            let word = text.value;
+            document.querySelector("#word").innerHTML = word;
+            text.value = '';
+            if (n > num) {
+                num++;
+            } else {
+                num =1;
+            }
+            participant.textContent = `${num}번째 참가자`;            
+        }
+
+        
+    </script>
+</body>
+</html>
