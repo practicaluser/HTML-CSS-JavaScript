@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./rsp.png" class="image"><br>
+    <button>가위</button>
+    <button>바위</button>
+    <button>보</button>
+    <div class="score">0</div>
+    <script>
+        const image = document.querySelector('.image');
+        const rect = image.getBoundingClientRect();
+        console.log(rect);
+
+        image.addEventListener('click', function(event) {
+        const mouseX = event.offsetX;
+        const mouseY = event.offsetY;
+
+        // 좌표 출력 또는 추가 로직 수행
+        console.log('X 좌표:', mouseX);
+        console.log('Y 좌표:', mouseY);
+        });
+
+       
+    </script>
+</body>
+</html>
