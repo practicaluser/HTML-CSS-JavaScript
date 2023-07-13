@@ -1,0 +1,21 @@
+스프레드 연산자를 활용해서 약간의 코드 개선
+
+접근법
+카드 짝 맞추기는 처음에 뒷면인 상태에서 카드를 12개 앞면을 일정시간 보여주고 뒷면으로 뒤집는다.
+-카드를 12개 생산
+-색깔 랜덤으로 배정하기(배열 활용)
+-일정시간 후에 적용(setTimeout)
+
+
+
+ //클릭 시 함수 구현하는 것이 힘들었다.
+카드를 클릭하면 앞면으로 뒤집히고 일정 시간 후에 다시 뒷면으로 가는 것을 구현하려고 했는데 잘 안됐다.
+
+중요 스코프 파악
+const cards = document.querySelectorAll('.card');
+함수 밖에서 생성하면 요소들이 아직 존재하지 않을 때여서 .card가 존재하지 않고 그래서 선택할 수가 없기 때문에 제대로 작동하지 않는다.
+const cards = [...document.querySelectorAll('.card')];
+//[div.card, div.card],  foreach 후 [div.card.flipped, div.card.flipped]
+
+중요
+if 문은 초기 코드 상단에 있으므로 clickable 변수를 수정한 후에 실행된다. setTimeout 함수의 콜백 함수는 3초 후에 실행되지만 if 문은 즉시 실행되므로 clickable 변수가 true로 설정되지 않은 상태에서 실행될 수 있다.
