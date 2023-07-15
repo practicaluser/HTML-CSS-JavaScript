@@ -5,9 +5,32 @@
     <title>지뢰찾기</title>
 </head>
 <body>
-    <input type="text">
-    <input type="text">
-    <input type="text">
+    <input placeholder="가로 줄" id="row" size="5"/>
+    <input placeholder="세로 줄" id="cell" size="5"/>
+    <input placeholder="지뢰" id="mine" size="5"/>
     <button>생성</button>
+    <script>
+        const button = document.querySelector('button');
+        const row = document.querySelector('#row');
+        const cell = document.querySelector('#cell');
+        const mine = document.querySelector('#mine');
+        let rowValue;
+        let cellValue;
+        let mineValue;
+
+        const start = () => {
+            rowValue = row.value;
+            cellValue = cell.value;
+            mineValue = mine.value;
+            if (!rowValue || !cellValue || !mineValue) {
+                alert("모든 입력창에 값을 입력해주세요.");
+                return;
+            } 
+            
+        }
+
+        button.addEventListener("click", start);
+        
+    </script>
 </body>
 </html>
