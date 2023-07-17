@@ -1,6 +1,13 @@
 input 평균 길이
 -<input placeholder="가로 줄" id="row" size="5"/>
 
+지뢰찾기 표 만들기
+-html에서 table>tbody
+-script에서 const table = document.querySelector('#table');
+const tbody = document.createElement('tbody'); table.appendChild(tbody);
+
+입력 값에 따른 테이블 만들기 
+
 오류
 -함수 선언문과 함수 표현식의 차이를 이해하지 못해서 오류가 났다.
 button.addEventListener("click", start);

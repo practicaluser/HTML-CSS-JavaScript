@@ -3,33 +3,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>지뢰찾기</title>
+    <style>
+      table {border-collapse: collapse;}
+      td {
+        border: 1px solid #bbb;
+        text-align: center;
+        line-height: 20px;
+        width: 20px;
+        height: 20px;
+        background: #888;
+      }
+      .mineIcon {
+        width: 15px;
+        height: 15px;
+        background: #888;
+      }
+    </style>
 </head>
 <body>
     <input placeholder="가로 줄" id="row" size="5"/>
     <input placeholder="세로 줄" id="cell" size="5"/>
     <input placeholder="지뢰" id="mine" size="5"/>
     <button>생성</button>
+    <div id="timer">0초</div>
+    <table id="table"></table>
+
     <script>
         const button = document.querySelector('button');
         const row = document.querySelector('#row');
         const cell = document.querySelector('#cell');
         const mine = document.querySelector('#mine');
+        const table = document.querySelector('#table');
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
         let rowValue;
         let cellValue;
         let mineValue;
 
+        
         const start = () => {
+            //입력값 검증
             rowValue = row.value;
             cellValue = cell.value;
             mineValue = mine.value;
             if (!rowValue || !cellValue || !mineValue) {
                 alert("모든 입력창에 값을 입력해주세요.");
                 return;
-            } 
+            } else if ( (rowValue * cellValue) < mineValue) {
+                alert("지뢰 개수는 전체 칸을 넘어설 수 없습니다.");
+                return;
+            }
+            
+            //지뢰찾기를 시작할 게임화면을 생성
+            for (let i=0; i<rowValue; i++) {
+                const tr = document.createElement('tr');
+                tr.className = `tr${i}`;
+                tbody.appendChild(tr);
+                for (let i=0; i<cellValue; i++) {
+                    const td = document.createElement('td');
+                    td.className = `td${i}`;
+                    tr.appendChild(td);
+                }
+            }  
+
+            //지뢰생성
+            mineCreate ();
+            
             
         }
 
         button.addEventListener("click", start);
+        
+        //지뢰 심기
+        function mineCreate () {
+            const minePositions = new Set();
+
+            while (minePositions.size < mineValue) {
+                let randomTr = Math.floor(Math.random() * rowValue);
+                let randomTd = Math.floor(Math.random() * cellValue);
+                const position = `${randomTr},${randomTd}`;
+                minePositions.add(position);
+            }
+
+            minePositions.forEach((position) => {
+                const [randomTr, randomTd] = position.split(',');
+                const selectedTr = document.querySelector(`.tr${randomTr}`);
+                const selectedTd = selectedTr.querySelector(`.td${randomTd}`);
+                const image = document.createElement('img');
+                image.src = '지뢰.png';
+                image.classList.add('mineIcon');
+                selectedTd.appendChild(image);
+            });
+        }
         
     </script>
 </body>
