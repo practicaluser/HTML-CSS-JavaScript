@@ -14,8 +14,8 @@
         background: #888;
       }
       .mineIcon {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
         background: #888;
       }
     </style>
@@ -62,19 +62,19 @@
                 for (let i=0; i<cellValue; i++) {
                     const td = document.createElement('td');
                     td.className = `td${i}`;
+                    td.addEventListener("click",tile);
                     tr.appendChild(td);
                 }
             }  
 
             //지뢰생성
-            mineCreate ();
-            
-            
+            mineCreate ();   
         }
 
         button.addEventListener("click", start);
         
-        //지뢰 심기
+        
+        //지뢰 생성
         function mineCreate () {
             const minePositions = new Set();
 
@@ -89,12 +89,42 @@
                 const [randomTr, randomTd] = position.split(',');
                 const selectedTr = document.querySelector(`.tr${randomTr}`);
                 const selectedTd = selectedTr.querySelector(`.td${randomTd}`);
-                const image = document.createElement('img');
-                image.src = '지뢰.png';
-                image.classList.add('mineIcon');
-                selectedTd.appendChild(image);
+                const mineLocation = document.createElement('div');
+                mineLocation.classList.add('mineLocation');
+                mineLocation.style.width = '23px'; 
+                mineLocation.style.height = '23px';
+                mineLocation.addEventListener('click', tile); //지뢰자리를 클릭시 게임종료
+                selectedTd.appendChild(mineLocation);
+                
             });
         }
+
+        //타일 클릭 시 지뢰위치인지 아닌지 판단하기
+        function tile (event) {
+            const mineLocation = event.target;
+            if ( mineLocation.classList.contains('mineLocation') ) {
+                gameEnd(mineLocation);
+            } else {
+                console.log('정상 타일 입니다');
+            }
+        }
+
+        //지뢰 클릭 시 게임 종료 (tile함수에서 mineLocation을 인자로 전달받았다.)
+        function gameEnd(mineLocation) {
+            const image = document.createElement("img");
+            image.src = "지뢰.png";
+            image.classList.add("mineIcon");
+            mineLocation.appendChild(image);
+            setTimeout(() => {
+                alert('지뢰를 선택해서 게임이 종료되었습니다.')
+                document.location.reload();
+            }, 300);     
+        }
+
+        
+
+        
+        
         
     </script>
 </body>
