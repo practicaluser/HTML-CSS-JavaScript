@@ -93,7 +93,6 @@
                 mineLocation.classList.add('mineLocation');
                 mineLocation.style.width = '23px'; 
                 mineLocation.style.height = '23px';
-                mineLocation.addEventListener('click', tile); //지뢰자리를 클릭시 게임종료
                 selectedTd.appendChild(mineLocation);
                 
             });
@@ -105,7 +104,10 @@
             if ( mineLocation.classList.contains('mineLocation') ) {
                 gameEnd(mineLocation);
             } else {
-                console.log('정상 타일 입니다');
+                // 정상 타일 주변 8타일 확인
+                checkMine(mineLocation);
+                let mineCount = 0;
+                console.log(`주변 지뢰 개수: ${mineCount}`);
             }
         }
 
@@ -121,7 +123,24 @@
             }, 300);     
         }
 
-        
+        //정상 타일 주변에 지뢰가 있는지 확인하는 함수
+        function checkMine(tile) {
+            const nextSibling = tile.nextSibling; //다음 형제 노드
+            const previousSibling = tile.previousSibling;  //이전 형제 노드
+            const cell = tile.parentNode;
+            const tbody = cell.parentNode;
+            console.log(nextSibling);
+            console.log(cell);
+            console.log(tbody);
+   
+            const rowIndex = row.rowIndex;
+            const cellIndex = cell.cellIndex;
+
+            const surroundingTiles = [];
+
+           
+        }
+
 
         
         
