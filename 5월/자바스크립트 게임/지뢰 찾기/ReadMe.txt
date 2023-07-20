@@ -1,3 +1,31 @@
+화면에 특정 문자 출력하기
+-innerHTML
+
+Node와 Element의 차이 
+https://hianna.tistory.com/711
+
+자바스크립트로 클릭시 타일 3*3 선택하기
+const tile = tile
+const tileLeft = tile.previousSibling;  
+const tileRight = tile.nextSibling; 
+const tileParentRight = tile.parentNode.nextSibling;  
+const tileParentLeft = tile.parentNode.previousSibling;
+
+if (tileParentRight !== null) {
+   const tileDown = tileParentRight.querySelector('.' + tileClass);
+   const tileDownLeft = tileDown.previousSibling;
+   const tileDownRight = tileDown.nextSibling;
+}
+
+if (tileParentLeft !== null) {
+   const tileUp = tileParentLeft.querySelector('.' + tileClass);
+   const tileUpLeft = tileUp.previousSibling;
+   const tileUpRight = tileUp.nextSibling;
+ }
+
+
+
+
 input 평균 길이
 -<input placeholder="가로 줄" id="row" size="5"/>
 
