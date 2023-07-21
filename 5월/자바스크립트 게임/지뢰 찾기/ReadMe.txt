@@ -1,3 +1,22 @@
+//오른쪽 마우스 클릭시 깃발생성하고 한번 더 클릭 시 깃발이 사라지게 한다.(최고난이도)
+appendchild를 제거하고 추가하는 방식으로 구현하려고 했는데 잘 안됐다(해당 변수를 찾을 수 없다고 나옴)
+innerHTML으로 내용을 붙였다 지웠다 하는 방식으로 구현, 칸 안에 있는 깃발을 오른쪽으로 클릭하면 깃발이 추가로 생성되서 오른쪽 클릭의 위치를 잘못 클릭하는 경우가 많아서, 위치를 변수를 만들어서 고정시켰다.
+
+스코프문제
+td.addEventListener('contextmenu',rightClick);
+
+function rightClick(e) {
+            e.preventDefault();
+            const image = document.createElement('img');
+            image.src = "깃발.png";
+            image.classList.add("flag");
+            td.appendChild(image);
+}
+-td is not defined 오류가 나온다.
+-해결책  e.target.appendChild(image);
+
+개발자도구 실행하는 도중에는 오른쪽 마우스를 금지해도 오른쪽 마우스가 실행된다.
+
 화면에 특정 문자 출력하기
 -innerHTML
 

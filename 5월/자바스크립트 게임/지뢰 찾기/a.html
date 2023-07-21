@@ -14,8 +14,13 @@
         background: #888;
       }
       .mineIcon {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
+        background: #888;
+      }
+      .flag {
+        width: 18px;
+        height: 18px;
         background: #888;
       }
     </style>
@@ -40,8 +45,10 @@
         let cellValue;
         let mineValue;
         let mineCount = 0;
-
+        let rightCheck = true;
+        let prevRightClickedElement = null;
         
+        //지뢰찾기 시작
         const start = () => {
             //입력값 검증
             rowValue = row.value;
@@ -60,19 +67,41 @@
                 const tr = document.createElement('tr');
                 tr.className = `tr${i}`;
                 tbody.appendChild(tr);
-                for (let i=0; i<cellValue; i++) {
+                for (let j=0; j<cellValue; j++) {
                     const td = document.createElement('td');
-                    td.className = `td${i}`;
+                    td.className = `td${j}`;
                     td.addEventListener("click",tile);
                     tr.appendChild(td);
+                    td.addEventListener('contextmenu',rightClick);
                 }
             }  
 
             //지뢰생성
-            mineCreate ();   
+            mineCreate ();  
+            
+            
         }
 
         button.addEventListener("click", start);
+
+        //오른쪽 마우스 클릭시 깃발생성하고 한번 더 클릭 시 깃발이 사라지게 한다.
+        function rightClick(e) {
+            let a = [];
+            e.preventDefault(); 
+            const element = e.target;
+            if (rightCheck) {
+                element.innerHTML += '<img src="깃발.png" class="flag">';
+                prevRightClickedElement = element;
+                rightCheck = false;
+            } else {
+                prevRightClickedElement.innerHTML = '';
+                rightCheck = true;
+
+            }
+        }
+            
+            
+
         
         
         //지뢰 생성
@@ -92,12 +121,14 @@
                 const selectedTd = selectedTr.querySelector(`.td${randomTd}`);
                 const mineLocation = document.createElement('div');
                 mineLocation.classList.add('mineLocation');
-                mineLocation.style.width = '23px'; 
-                mineLocation.style.height = '23px';
+                mineLocation.style.width = '20px'; 
+                mineLocation.style.height = '20px';
                 selectedTd.appendChild(mineLocation);
                 
             });
         }
+        
+        
 
         //타일 클릭 시 지뢰위치인지 아닌지 판단하기
         function tile (event) {
@@ -105,10 +136,8 @@
             if ( mineLocation.classList.contains('mineLocation') ) {
                 gameEnd(mineLocation);
             } else {
-                
                 // 정상 타일 주변 8타일 확인
-                checkMine(mineLocation);
-                
+                checkMine(mineLocation); 
             }
         }
 
@@ -126,7 +155,6 @@
 
         //정상 타일 주변에 지뢰가 있는지 확인하는 함수
         function checkMine(tile) {
-            
             const tileClass = tile.className;
             const tileLeft = tile.previousSibling;  
             const tileRight = tile.nextSibling; 
