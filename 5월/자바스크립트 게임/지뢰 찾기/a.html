@@ -19,8 +19,8 @@
         background: #888;
       }
       .flag {
-        width: 18px;
-        height: 18px;
+        width: 17px;
+        height: 17px;
         background: #888;
       }
     </style>
@@ -47,6 +47,7 @@
         let mineCount = 0;
         let rightCheck = true;
         let prevRightClickedElement = null;
+        let firstClicked = 0;
         
         //지뢰찾기 시작
         const start = () => {
@@ -74,12 +75,7 @@
                     tr.appendChild(td);
                     td.addEventListener('contextmenu',rightClick);
                 }
-            }  
-
-            //지뢰생성
-            mineCreate ();  
-            
-            
+            }      
         }
 
         button.addEventListener("click", start);
@@ -96,16 +92,28 @@
             } else {
                 prevRightClickedElement.innerHTML = '';
                 rightCheck = true;
-
             }
         }
             
-            
+        
+        //타일 클릭 시 지뢰위치인지 아닌지 판단하기
+        function tile (event) {
+            //타일을 처음으로 클릭시 지뢰를 생성하지 않는다.
+            if (firstClicked === 0) {
+                mineCreate ();
+            } 
 
-        
-        
+            const mineLocation = event.target;
+            if ( mineLocation.classList.contains('mineLocation') ) {
+                gameEnd(mineLocation);
+            } else {
+                // 정상 타일 주변 8타일 확인
+                checkMine(mineLocation); 
+            }
+        }
+
         //지뢰 생성
-        function mineCreate () {
+        function mineCreate () { 
             const minePositions = new Set();
 
             while (minePositions.size < mineValue) {
@@ -126,19 +134,6 @@
                 selectedTd.appendChild(mineLocation);
                 
             });
-        }
-        
-        
-
-        //타일 클릭 시 지뢰위치인지 아닌지 판단하기
-        function tile (event) {
-            const mineLocation = event.target;
-            if ( mineLocation.classList.contains('mineLocation') ) {
-                gameEnd(mineLocation);
-            } else {
-                // 정상 타일 주변 8타일 확인
-                checkMine(mineLocation); 
-            }
         }
 
         //지뢰 클릭 시 게임 종료 (tile함수에서 mineLocation을 인자로 전달받았다.)
