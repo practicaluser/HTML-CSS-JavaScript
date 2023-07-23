@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콤마 찍기</title>
+  </head>
+  <body>
+    <script>
+      function comma(s) {
+        if (s.length <= 3) {
+          return s;
+        } else {
+          return comma(s.slice(0, s.length - 3)) + ',' + s.slice(s.length - 3);
+        }
+      }
+
+      const n = prompt('숫자를 입력해주세요.');
+      console.log(comma(n));
+    </script>
+    
+  </body>
+</html>

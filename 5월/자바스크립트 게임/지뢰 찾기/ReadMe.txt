@@ -1,5 +1,16 @@
-지뢰찾기 주변 칸 한번에 열기
--https://codeup.kr/problem.php?id=3500&rid=
+지뢰찾기 주변 칸 한번에 열기(재귀 활용)
+-주의
+--블록 내에 선언되면 그 블록 안에서 밖에 변수를 활용하지 못하므로 특정 조건하에서만 변수가 에러나지 않고 사용할 수 있어 블록 내에서만 선언했다면 일단 선언은 외부에하고 실제 내용은 블록 안에서 만드는 것이 효율적이다
+--if (!tile || tile.className === undefined ) {
+                return;
+            } else if(tile.className.includes('opened')) {
+                return;
+            }
+
+
+주의
+tile.classList.add('opened'); O
+tile.classList.add = 'opened'; X
 
 //오른쪽 마우스 클릭시 깃발생성하고 한번 더 클릭 시 깃발이 사라지게 한다.(최고난이도)
 appendchild를 제거하고 추가하는 방식으로 구현하려고 했는데 잘 안됐다(해당 변수를 찾을 수 없다고 나옴)

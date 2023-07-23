@@ -23,6 +23,7 @@
         height: 17px;
         background: #888;
       }
+      td.opened {background: white;}
     </style>
 </head>
 <body>
@@ -101,6 +102,7 @@
             //타일을 처음으로 클릭시 지뢰를 생성하지 않는다.
             if (firstClicked === 0) {
                 mineCreate ();
+                firstClicked++
             } 
 
             const mineLocation = event.target;
@@ -150,6 +152,11 @@
 
         //정상 타일 주변에 지뢰가 있는지 확인하는 함수
         function checkMine(tile) {
+            if (!tile || tile.className === undefined ) {
+                return;
+            } else if(tile.className.includes('opened')) {
+                return;
+            }
             const tileClass = tile.className;
             const tileLeft = tile.previousSibling;  
             const tileRight = tile.nextSibling; 
@@ -157,35 +164,51 @@
             const tileParentLeft = tile.parentNode.previousSibling;
             countMineLocations(tileLeft);
             countMineLocations(tileRight);
-            
+            let tileDown, tileDownLeft, tileDownRight, tileUp, tileUpLeft, tileUpRight;
 
             if (tileParentRight !== null) {
-                const tileDown = tileParentRight.querySelector('.' + tileClass);
-                const tileDownLeft = tileDown.previousSibling;
-                const tileDownRight = tileDown.nextSibling;
+                tileDown = tileParentRight.querySelector('.' + tileClass);
+                tileDownLeft = tileDown.previousSibling;
+                tileDownRight = tileDown.nextSibling;
                 countMineLocations(tileDown);
                 countMineLocations(tileDownLeft);
                 countMineLocations(tileDownRight);
             }
 
             if (tileParentLeft !== null) {
-                const tileUp = tileParentLeft.querySelector('.' + tileClass);
-                const tileUpLeft = tileUp.previousSibling;
-                const tileUpRight = tileUp.nextSibling;
+                tileUp = tileParentLeft.querySelector('.' + tileClass);
+                tileUpLeft = tileUp.previousSibling;
+                tileUpRight = tileUp.nextSibling;
                 countMineLocations(tileUp);
                 countMineLocations(tileUpLeft);
                 countMineLocations(tileUpRight);
             }     
-
-            tile.innerHTML = mineCount;
+            tile.classList.add('opened');
+            if (mineCount === 0) {
+                checkMine(tileLeft);
+                checkMine(tileRight);
+                checkMine(tileDown);
+                checkMine(tileDownLeft);
+                checkMine(tileDownRight);
+                checkMine(tileUp);
+                checkMine(tileUpLeft);
+                checkMine(tileUpRight);
+            } else {
+                tile.innerHTML = mineCount;
+            } 
             mineCount = 0;
+
+            //개선방안
+            //이웃 = [tileLeft, tileRight ...]
+            // for (i of 이웃) {checkMine(i)};
         }
 
         //주변에 지뢰 개수 확인
         function countMineLocations(clickedTile) {    
             const mineLocationSelector = '.mineLocation';
-            
-            if (clickedTile === null) {
+            if (!clickedTile || clickedTile.className === undefined) {
+                return;
+            } else if(clickedTile.className.includes('opened')) {
                 return;
             }
             
