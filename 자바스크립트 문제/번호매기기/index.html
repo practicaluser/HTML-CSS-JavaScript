@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>번호매기기</title>
+  </head>
+  <body>
+    <script>
+      const students = ['강은지', '김유정', '박현서', '최성훈', '홍유진', '박지호', '권윤일', '김채리', '한지호', '김진이', '김민호', '강채연'];
+
+      students.sort();
+
+      for (let key in students){
+        console.log(`번호: ${Number(key)+1}, 이름: ${students[key]}`);
+      }
+    </script>
+    
+  </body>
+</html>
