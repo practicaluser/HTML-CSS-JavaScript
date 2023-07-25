@@ -46,9 +46,10 @@
         let cellValue;
         let mineValue;
         let mineCount = 0;
-        let rightCheck = true;
-        let prevRightClickedElement = null;
+        // let rightCheck = true;
+        // let prevRightClickedElement = null;
         let firstClicked = 0;
+        let flagCount;
         
         //지뢰찾기 시작
         const start = () => {
@@ -76,7 +77,8 @@
                     tr.appendChild(td);
                     td.addEventListener('contextmenu',rightClick);
                 }
-            }      
+            }  
+            flagCount = mineValue;    
         }
 
         button.addEventListener("click", start);
@@ -84,15 +86,19 @@
         //오른쪽 마우스 클릭시 깃발생성하고 한번 더 클릭 시 깃발이 사라지게 한다.
         function rightClick(e) {
             let a = [];
+            console.log(flagCount);
+            console.log(a);
             e.preventDefault(); 
             const element = e.target;
-            if (rightCheck) {
+            
+            if (flagCount > 0) {
                 element.innerHTML += '<img src="깃발.png" class="flag">';
-                prevRightClickedElement = element;
-                rightCheck = false;
-            } else {
-                prevRightClickedElement.innerHTML = '';
-                rightCheck = true;
+                flagCount--;
+                a.push(element);
+                // prevRightClickedElement = element; 
+            } else if (a.includes(element)) {
+                element.innerHTML = '';
+                flagCount++;
             }
         }
             
@@ -184,15 +190,11 @@
                 countMineLocations(tileUpRight);
             }     
             tile.classList.add('opened');
+            const tileDirection = [tileLeft, tileRight, tileDown, tileDownLeft, tileDownRight, tileUp, tileUpLeft, tileUpRight]
             if (mineCount === 0) {
-                checkMine(tileLeft);
-                checkMine(tileRight);
-                checkMine(tileDown);
-                checkMine(tileDownLeft);
-                checkMine(tileDownRight);
-                checkMine(tileUp);
-                checkMine(tileUpLeft);
-                checkMine(tileUpRight);
+                for (let i of tileDirection) {
+                    checkMine(i);
+                }
             } else {
                 tile.innerHTML = mineCount;
             } 
@@ -201,6 +203,14 @@
             //개선방안
             //이웃 = [tileLeft, tileRight ...]
             // for (i of 이웃) {checkMine(i)};
+            // checkMine(tileLeft);
+            //     checkMine(tileRight);
+            //     checkMine(tileDown);
+            //     checkMine(tileDownLeft);
+            //     checkMine(tileDownRight);
+            //     checkMine(tileUp);
+            //     checkMine(tileUpLeft);
+            //     checkMine(tileUpRight);
         }
 
         //주변에 지뢰 개수 확인
