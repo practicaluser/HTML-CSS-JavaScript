@@ -49,6 +49,8 @@
         let firstClicked = 0;
         let flagCount;
         let a = [];
+        let mineFlaged = 0;
+        
         
         //지뢰찾기 시작
         const start = () => {
@@ -82,30 +84,43 @@
 
         button.addEventListener("click", start);
 
+       
+
         //오른쪽 마우스 클릭시 깃발생성하고 한번 더 클릭 시 깃발이 사라지게 한다.
         function rightClick(e) {
             e.preventDefault();
             const element = e.target;
             const tdElement = element.closest('td'); 
             const existingFlags = tdElement.querySelectorAll('img.flag');
-
+            const mineLocationElement = tdElement.querySelector('.mineLocation');
             if (flagCount > 0 && existingFlags.length === 0) {
-                const flagImg = '<img src="깃발.png" class="flag">';
-                const mineLocationElement = tdElement.querySelector('.mineLocation');
+                const flagImg = '<img src="깃발.png" class="flag">';   
                 if (mineLocationElement) {
                     mineLocationElement.insertAdjacentHTML('beforeend', flagImg);
+                    mineFlaged++;
                 } else {
                     tdElement.innerHTML += flagImg;
                 }      
                 a.push(tdElement);
                 flagCount--;
             } else if (a.includes(tdElement) && existingFlags.length === 1) {
+                if (mineLocationElement) {
+                    mineFlaged--;
+                }
                 existingFlags.forEach(flag => flag.remove());
                 flagCount++;
-            } else {
-                return;
-            }       
+            } 
 
+            //승리 로직
+            if (flagCount === 0 && mineFlaged == mineValue) {
+                setTimeout(() => {
+                    alert('승리했습니다.');
+                    document.location.reload();
+                },500);
+                
+            }
+            
+            
         }
             
         
