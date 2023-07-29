@@ -4,6 +4,44 @@ if (flagCount === 0 && mineFlaged == mineValue) {
 }
 mineValue가 '1'이런 문자열 형태여서 ===로 하면 안된다.
 
+승리조건 1 : 깃발을 모두 지뢰 자리에 꽂았을 때 승리
+function rightClick(e) {
+            e.preventDefault();
+            const element = e.target;
+            const tdElement = element.closest('td'); 
+            const existingFlags = tdElement.querySelectorAll('img.flag');
+            const mineLocationElement = tdElement.querySelector('.mineLocation');
+            if (flagCount > 0 && existingFlags.length === 0) {
+                const flagImg = '<img src="깃발.png" class="flag">';   
+                if (mineLocationElement) {
+                    mineLocationElement.insertAdjacentHTML('beforeend', flagImg);
+                    mineFlaged++;
+                } else {
+                    tdElement.innerHTML += flagImg;
+                }      
+                a.push(tdElement);
+                flagCount--;
+            } else if (a.includes(tdElement) && existingFlags.length === 1) {
+                if (mineLocationElement) {
+                    mineFlaged--;
+                }
+                existingFlags.forEach(flag => flag.remove());
+                flagCount++;
+            } 
+            leftFlagNumber.innerHTML = `<img src="깃발.png" class="leftFlag">: ${flagCount}개`;
+
+            승리 로직
+            if (flagCount === 0 && mineFlaged == mineValue) {
+                setTimeout(() => {
+                    alert('승리했습니다.');
+                    document.location.reload();
+                },500);
+                
+            }
+          }
+
+승리 조건 2 : 지뢰를 제외한 모든 타일을 클릭 시 승리
+
 
 지뢰찾기 오른쪽 마우스 클릭시 로직(최고난이도)
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지뢰찾기</title>
+    <style>
+      table {border-collapse: collapse;}
+      td {
+        border: 1px solid #bbb;
+        text-align: center;
+        line-height: 20px;
+        width: 20px;
+        height: 20px;
+        background: #888;
+      }
+      .mineIcon {
+        width: 18px;
+        height: 18px;
+        background: #888;
+      }
+      .flag {
+        width: 17px;
+        height: 17px;
+        background: #888;
+      }
+      .leftFlag {
+        width: 17px;
+        height: 17px;
+        margin-left: 10px;
+      }
+      td.opened {background: white;}
+      .subBar {
+        margin-bottom: 10px;
+      }
+    </style>
+</head>
+<body>
+    <input placeholder="가로 줄" id="row" size="5"/>
+    <input placeholder="세로 줄" id="cell" size="5"/>
+    <input placeholder="지뢰" id="mine" size="5"/>
+    <button>생성</button>
+    <div class="subBar">
+        <span class="timer">0초</span>
+        <span class="leftFlagNumber"></span>
+    </div>
+    <table id="table"></table>
+
+    <script src="./mineSweeper.js"></script>
+</body>
+</html>
