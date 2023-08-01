@@ -22,6 +22,40 @@ const start = () => {
 
 3 입력 값에 따른 테이블 만들기 
 
+4 지뢰찾기 표 만들기
+-html에서 table>tbody
+-script에서 const table = document.querySelector('#table');
+const tbody = document.createElement('tbody'); table.appendChild(tbody);
+
+5 input 평균 길이
+-<input placeholder="가로 줄" id="row" size="5"/>
+
+6 자바스크립트로 클릭시 타일 3*3 선택하기
+const tile = tile
+const tileLeft = tile.previousSibling;  
+const tileRight = tile.nextSibling; 
+const tileParentRight = tile.parentNode.nextSibling;  
+const tileParentLeft = tile.parentNode.previousSibling;
+
+if (tileParentRight !== null) {
+   const tileDown = tileParentRight.querySelector('.' + tileClass);
+   const tileDownLeft = tileDown.previousSibling;
+   const tileDownRight = tileDown.nextSibling;
+}
+
+if (tileParentLeft !== null) {
+   const tileUp = tileParentLeft.querySelector('.' + tileClass);
+   const tileUpLeft = tileUp.previousSibling;
+   const tileUpRight = tileUp.nextSibling;
+ }
+
+7 Node와 Element의 차이 
+https://hianna.tistory.com/711
+
+8 화면에 특정 문자 출력하기
+-innerHTML
+
+개발자도구 실행하는 도중에는 오른쪽 마우스를 금지해도 오른쪽 마우스가 실행된다.
 
 
 승리조건
@@ -103,43 +137,17 @@ function rightClick(e) {
 -td is not defined 오류가 나온다.
 -해결책  e.target.appendChild(image);
 
-개발자도구 실행하는 도중에는 오른쪽 마우스를 금지해도 오른쪽 마우스가 실행된다.
-
-화면에 특정 문자 출력하기
--innerHTML
-
-Node와 Element의 차이 
-https://hianna.tistory.com/711
-
-자바스크립트로 클릭시 타일 3*3 선택하기
-const tile = tile
-const tileLeft = tile.previousSibling;  
-const tileRight = tile.nextSibling; 
-const tileParentRight = tile.parentNode.nextSibling;  
-const tileParentLeft = tile.parentNode.previousSibling;
-
-if (tileParentRight !== null) {
-   const tileDown = tileParentRight.querySelector('.' + tileClass);
-   const tileDownLeft = tileDown.previousSibling;
-   const tileDownRight = tileDown.nextSibling;
-}
-
-if (tileParentLeft !== null) {
-   const tileUp = tileParentLeft.querySelector('.' + tileClass);
-   const tileUpLeft = tileUp.previousSibling;
-   const tileUpRight = tileUp.nextSibling;
- }
 
 
 
 
-input 평균 길이
--<input placeholder="가로 줄" id="row" size="5"/>
 
-지뢰찾기 표 만들기
--html에서 table>tbody
--script에서 const table = document.querySelector('#table');
-const tbody = document.createElement('tbody'); table.appendChild(tbody);
+
+
+
+
+
+
 
 
 
