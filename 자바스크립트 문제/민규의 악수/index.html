@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>민규의 악수</title>
+  </head>
+  <body>
+    <script>
+      let n = Number(prompt('총 악수 횟수'));
+      let 참가자수 = 2;
+      for (let i =1; i<n; i++) {
+        if (n > i) {
+          n-=i;
+          참가자수+=1;
+        } else {
+          break;
+        }
+      }
+      console.log(n, 참가자수)
+    </script>
+    
+  </body>
+</html>
