@@ -14,7 +14,7 @@
       let col = 1;
       for (let i = 0; i<n; i++) {
         for (let j = 0; j<n; j++) {
-          //가로 교환 i=0 j=2 
+          //가로 교환 
           if (j !== (n-1)) {
             [ ch[i][j], ch[i][j+1] ] =  [ch[i][j+1], ch[i][j] ]; 
             check(n, row, col);
@@ -24,7 +24,7 @@
             
           }
           
-          // 세로 교환 i=0 j=2  02 12 12 02
+          // 세로 교환
           if (i !== (n-1)) {
             [ch[i][j], ch[i + 1][j]] = [ch[i + 1][j], ch[i][j]]; 
             check(n, row, col);
@@ -45,7 +45,7 @@
               } else if (ch[k][l] !== ch[k][l+1] && row >= 2) {
                 row-=1;
               }
-              //0001 0102 0203 0304
+              
               if (ch[l][k] === ch[l+1][k]) {
                 col+=1 ;
               } else if (ch[l][k] !== ch[l+1][k] && col >= 2) {
