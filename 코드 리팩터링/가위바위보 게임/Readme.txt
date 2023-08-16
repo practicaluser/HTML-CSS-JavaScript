@@ -8,39 +8,22 @@
 4 3번 경기를 진행해서 먼저 3번 이기는 쪽이 승리하고, 승리 후에는 새롭게 게임이 진행된다.
 
 배운 점
-div에 이미지를 넣을 때는 div에 공간을 미리 만들어 놓아야 한다.
+--div에 이미지를 넣을 때는 div에 공간을 미리 만들어 놓아야 한다.
 
-n의 값을 순환하고 싶을 때
-n = (n + 1) % 3;
+-n의 값을 순환하고 싶을 때
+--n = (n + 1) % 3;
 
-간단한 가위바위보 로직
-
-html에서 버튼의 class가져오기
--classList 메서드는 DOMTokenList 객체를 가져옴
+-객체에서 특정한 값을 가져오고 싶을 때(classList와 Array.from 활용)
 --const className = clickedButton.classList;
---DOMTokenList ['scissors', value: 'scissors']
--가져온 DOMTokenList 객체를 배열로 변환할 때 Array.from 활용
---const myChoice = Array.from(className)
----['scissors']
+--const myChoice = Array.from(className);
 
 
-X좌표와 Y좌표 구하기
-const image = document.querySelector('.image');
-        //전체 이미지 좌표 관련 요약
-        const rect = image.getBoundingClientRect();
-        console.log(rect);
 
-        image.addEventListener('click', (event) => {
-        const mouseX = event.offsetX;
-        const mouseY = event.offsetY;
 
-        // 좌표 출력 또는 추가 로직 수행
-        console.log('X 좌표:', mouseX);
-        console.log('Y 좌표:', mouseY);
-});
 
-참고
-https://inpa.tistory.com/entry/JS-🌐-HTML-요소의-위치X-Y-값-얻기
+
+
+
 
 
 

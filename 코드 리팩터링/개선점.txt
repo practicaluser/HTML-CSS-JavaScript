@@ -1,7 +1,25 @@
 https://velog.io/@sypear
 위 사이트같이 디자인을 개선할 필요가 있다.(프런트엔드는 눈에 잘 보이게 해야 하므로)
 
+
+
 코드 평가 기준 : 간결성, 가독성, 예측 가능성
+
+기본 기능
+inline : span
+block : div
+inline-block : button, input
+
+html에 적힌 문자를 바꿀 때
+-div에 class를 작성하고 기본 문자를 통째로 바꾸거나
+-div 중간에 span을 끼워넣어서 특정 문자만 교환
+
+innerHTML과 innerText과 textContent 차이
+https://velog.io/@kim_unknown_/JavaScript-Difftext
+innerHTML은 요소 내에 있는 HTML과 XML 모두를 의미하고,
+innerText는 요소 내에서 사용자에게 보여지는 text를 의미하고,
+textContent는 script나 style 태그와 상관없이 해당 노드가 가지고 있는 text를 의미한다.
+
 
 배열 메서드
 map : 형태는 변경할 수 있으나 길이는 유지
@@ -34,3 +52,29 @@ slice에서 시작점만 인수로 전달하면 시작점부터 배열의 마지
 
 객체 값의 길이 구하기
 -graph[key].length
+
+
+X좌표와 Y좌표 구하기
+const image = document.querySelector('.image');
+        //전체 이미지 좌표 관련 요약
+        const rect = image.getBoundingClientRect();
+        console.log(rect);
+
+        image.addEventListener('click', (event) => {
+        const mouseX = event.offsetX;
+        const mouseY = event.offsetY;
+
+        // 좌표 출력 또는 추가 로직 수행
+        console.log('X 좌표:', mouseX);
+        console.log('Y 좌표:', mouseY);
+});
+
+https://inpa.tistory.com/entry/JS-🌐-HTML-요소의-위치X-Y-값-얻기
+
+html에서 버튼의 class가져오기
+-classList 메서드는 DOMTokenList 객체를 가져옴
+--const className = clickedButton.classList;
+--DOMTokenList ['scissors', value: 'scissors']
+-가져온 DOMTokenList 객체를 배열로 변환할 때 Array.from 활용
+--const myChoice = Array.from(className)
+---['scissors']

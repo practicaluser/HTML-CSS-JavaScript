@@ -76,6 +76,7 @@
       operator += event.target.textContent;
       resultHelp.value += event.target.textContent;
       result.value = '';
+      console.log(num);
     }
 
     op.forEach(a => {
@@ -94,10 +95,12 @@
     // =을 누르면 계산결과를 보여주기
     calculate.addEventListener("click", () => {
       result.value = '';
+      resultHelp.value = '';
       const equationString = num.join('');
       const equation = new Function(`return ${equationString}`);
       const answer = equation();
       result.value += answer;
+      num = [result.value];
     })
     
   </script>
