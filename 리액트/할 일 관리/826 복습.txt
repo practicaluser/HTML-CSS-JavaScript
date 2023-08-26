@@ -1,0 +1,9 @@
+1 사각형 만들기
+2 border-box를 언제 활용할지
+3 margin: 0 auto;
+4 gap 활용
+5 h1 종류는 기본적으로 margin 위아래가 설정되어 있다
+6 input이나 button은 마진은 없지만 기본적인 border과 padding 존재
+7 flex: 1의 의미
+8 width의 기본값인 width: auto
+9 input 크게 보이게 하기
