@@ -7,3 +7,4 @@
 7 flex: 1의 의미
 8 width의 기본값인 width: auto
 9 input 크게 보이게 하기
+10 패딩 활용
