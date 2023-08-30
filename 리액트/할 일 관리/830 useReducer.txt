@@ -1,0 +1,11 @@
+useReudecer가 필요한 이유 직관적으로 보고 느끼기(복잡해진 상태관리 깔끔하게 코딩하기)
+-https://www.youtube.com/watch?v=iIgZ2dfI9kA
+
+수업영상 
+-https://www.youtube.com/watch?v=-VrFAGYIFKU
+
+React Hooks에 취한다 - useReducer
+-https://www.youtube.com/watch?v=tdORpiegLg0
+
+useReducer를 이용한 전화번호부 만들기
+-https://www.youtube.com/watch?v=4ulO3M9ujBc
